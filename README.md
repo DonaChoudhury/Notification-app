@@ -1,3 +1,7 @@
+Links for the Demo Video:-
+---https://drive.google.com/file/d/1pUP2uGxFFJwciLcTc5Px6yJk2jPnfNNd/view?usp=drivesdk
+---https://drive.google.com/file/d/1p_BWWNMb5fFyhaQzQOsSFGEzl4JAuYe3/view?usp=drivesdk
+
 # 📬 Notification(inApp) & Email Notification App
 
 This is a Node.js (Express) application to send *real-time in-app notifications* via [Pusher](https://pusher.com) and *emails* via [Nodemailer](https://nodemailer.com). It includes a simple front-end interface for input and Bootstrap toast-based notifications.
