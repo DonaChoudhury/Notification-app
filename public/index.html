@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications</title>
+  </head>
+  <body>
+    <form id="notifications">
+        <input type="text" id="message" placeholder="Enter Message" required/>
+        <input type="text" id="recipient" placeholder="Enter recipient" required/>
+        <button type="'submit"> Send Notification</button>
+    </form>
+
+    <!-- ⭐️ ADDED: Email Form -->
+  <form id="emailForm">
+      <!-- <input type="email" id="senderEmail" placeholder="Enter Sender Email" required/>
+        -->
+      <input type="email" id="senderEmail" value="donaaaait1@gmail.com" readonly required />
+  <small style="color: gray;">Only <strong>donaaaait1@gmail.com</strong> is allowed as sender.</small>
+      <input type="email" id="receiverEmail" placeholder="Enter Receiver Email" required/>
+      <button type="submit">Send Email</button>
+  </form>
+  <p id="emailStatus"></p>
+  <!-- ⭐️ END ADDED -->
+    <script>
+        document.getElementById('notifications').addEventListener('submit',async function(event){
+            event.preventDefault();
+            const message=document.getElementById('message').value;
+              const recipient=document.getElementById('recipient').value;
+              const response=await fetch('send-notification',{
+                method:'POST',
+                headers:{'Content-type': 'application/json'},
+                body:JSON.stringify({message,recipient})
+              });
+        });
+
+        // ⭐️ ADDED: Email form handler
+      document.getElementById('emailForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const senderEmail = document.getElementById('senderEmail').value;
+        const receiverEmail = document.getElementById('receiverEmail').value;
+
+        const response = await fetch('/send-email', {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify({ senderEmail, receiverEmail })
+        });
+
+        const status = document.getElementById('emailStatus');
+        if (response.ok) {
+          status.textContent = 'Email sent successfully!';
+        } else {
+          status.textContent = 'Failed to send email.';
+        }
+      });
+      // ⭐️ END ADDED
+    </script>
+  </body>
+  </html>
