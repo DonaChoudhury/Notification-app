@@ -16,8 +16,21 @@
       <!-- <input type="email" id="senderEmail" placeholder="Enter Sender Email" required/>
         -->
       <input type="email" id="senderEmail" value="donaaaait1@gmail.com" readonly required />
+      
   <small style="color: gray;">Only <strong>donaaaait1@gmail.com</strong> is allowed as sender.</small>
+  <br/>
+  <br/>
       <input type="email" id="receiverEmail" placeholder="Enter Receiver Email" required/>
+         <br/>
+         <br/>
+     
+      <input type="text" id="emailSubject" placeholder="Enter Email Subject" required />
+         <br/>
+         <br/>
+
+  <!-- ⭐️ NEW: Message Text Input -->
+  <textarea id="emailText" placeholder="Enter Email Message" required></textarea>
+     <br/>
       <button type="submit">Send Email</button>
   </form>
   <p id="emailStatus"></p>
@@ -39,11 +52,14 @@
         event.preventDefault();
         const senderEmail = document.getElementById('senderEmail').value;
         const receiverEmail = document.getElementById('receiverEmail').value;
+        const subject = document.getElementById('emailSubject').value;//
+    const text = document.getElementById('emailText').value;//
+
 
         const response = await fetch('/send-email', {
           method: 'POST',
           headers: { 'Content-type': 'application/json' },
-          body: JSON.stringify({ senderEmail, receiverEmail })
+          body: JSON.stringify({ senderEmail, receiverEmail, subject, text })
         });
 
         const status = document.getElementById('emailStatus');

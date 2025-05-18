@@ -67,14 +67,14 @@ const transporter = nodemailer.createTransport({
 
 //
 app.post('/send-email', async (req, res) => {
-  const { senderEmail, receiverEmail } = req.body;
+  const { senderEmail, receiverEmail ,subject, text } = req.body;
 
   try {
     const info = await transporter.sendMail({
       from: `"Notification App" <${senderEmail}>`,
       to: receiverEmail,
-      subject: "Hello from Node.js",
-      text: "This is a test email sent from Node.js!",
+      subject: subject || "Hello from Node.js", // ✅ UPDATED
+      text: text || "This is a test email sent from Node.js!",     // ✅ UPDATED
     });
 
     console.log(`Message sent: ${info.messageId}`);
