@@ -73,8 +73,8 @@ app.post('/send-email', async (req, res) => {
     const info = await transporter.sendMail({
       from: `"Notification App" <${senderEmail}>`,
       to: receiverEmail,
-      subject: subject || "Hello from Node.js", // ✅ UPDATED
-      text: text || "This is a test email sent from Node.js!",     // ✅ UPDATED
+      subject: subject || "Hello from Node.js", 
+      text: text || "This is a test email sent from Node.js!",     
     });
 
     console.log(`Message sent: ${info.messageId}`);
