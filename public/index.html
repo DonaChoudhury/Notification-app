@@ -11,7 +11,7 @@
         <button type="'submit"> Send Notification</button>
     </form>
 
-    <!-- ⭐️ ADDED: Email Form -->
+    
   <form id="emailForm">
       <!-- <input type="email" id="senderEmail" placeholder="Enter Sender Email" required/>
         -->
@@ -28,13 +28,13 @@
          <br/>
          <br/>
 
-  <!-- ⭐️ NEW: Message Text Input -->
+
   <textarea id="emailText" placeholder="Enter Email Message" required></textarea>
      <br/>
       <button type="submit">Send Email</button>
   </form>
   <p id="emailStatus"></p>
-  <!-- ⭐️ END ADDED -->
+ 
     <script>
         document.getElementById('notifications').addEventListener('submit',async function(event){
             event.preventDefault();
@@ -47,7 +47,7 @@
               });
         });
 
-        // ⭐️ ADDED: Email form handler
+    
       document.getElementById('emailForm').addEventListener('submit', async function(event) {
         event.preventDefault();
         const senderEmail = document.getElementById('senderEmail').value;
@@ -69,7 +69,7 @@
           status.textContent = 'Failed to send email.';
         }
       });
-      // ⭐️ END ADDED
+      
     </script>
   </body>
   </html>
